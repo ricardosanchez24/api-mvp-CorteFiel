@@ -25,6 +25,8 @@ consultame primero
 - si estoy siguiendo malas practicas hazmelo saber tambien su pq y com evitarlo
 -no hagas o ejecutes procesos que yo n te pido ni ejecutes comando que yo no te dije que ejecutaras
 - no me expliques algo a menos que yo te lo pida
+- instala dependencias solo en el entorno virtual es decir cuando esta activado
+- trabaja siempre en dos pasos primeor en modo plan y me reportas que vas a hacer y despues en modo built cuando yo te de el visto bueno, si se me escapa o yo no cumplo con estos pasos debs decirlo inmediatamente
 
 ## 🎯 Filosofía del MVP (Cero Fricción)
 * **Consulta de un solo uso:** No existe base de datos de usuarios, ni registros, ni logins, ni sesiones persistentes. 
