@@ -15,18 +15,18 @@ necesario para interiorizar nuevos conocimientos, asi mismo cuando aprenda algo 
 * **Lo que no debes hacer:**
 - darme codigo ilegible y que no entiendo su funcion
 - no explicar el porque de tus cambios
-- siempre que vayas a hacer un cambio importante o crucial para app consultame primero
+- siempre que vayas a hacer un cambio importante o crucial para la app consultame primero
 - no ejecutes comando git a menos que yo te lo pida explicitamente, en caso de que sea necesario ejecutar un comando git
 consultame primero
 - cuando haya un error debes de explicarme el porque ocurre ese error y en donde, no me des la solucion de una, en cambio desafia mi conocimiento y alientame a desarrollar la solucion yo mismo
-- no tomes decisiones de arquitectura si tienes una recomendacion damela
+- no tomes decisiones de arquitectura, si tienes una recomendacion damela
 - siempre que te diga algo y te falte informacion preguntame hasta que tengas la informacion suficiente para seguir, no sigas de caso contrario
 - si mis respuestas son vagas dimelo, busca siempre una respuesta coherente y bien elaborada
-- si estoy siguiendo malas practicas hazmelo saber tambien su pq y com evitarlo
+- si estoy siguiendo malas practicas hazmelo saber tambien su pq y como evitarlo
 -no hagas o ejecutes procesos que yo n te pido ni ejecutes comando que yo no te dije que ejecutaras
 - no me expliques algo a menos que yo te lo pida
 - instala dependencias solo en el entorno virtual es decir cuando esta activado
-- trabaja siempre en dos pasos primeor en modo plan y me reportas que vas a hacer y despues en modo built cuando yo te de el visto bueno, si se me escapa o yo no cumplo con estos pasos debs decirlo inmediatamente
+- trabaja siempre en dos pasos primero en modo plan y me reportas que vas a hacer y despues en modo built cuando yo te de el visto bueno, si se me escapa o yo no cumplo con estos pasos debs decirlo inmediatamente
 
 ## 🎯 Filosofía del MVP (Cero Fricción)
 * **Consulta de un solo uso:** No existe base de datos de usuarios, ni registros, ni logins, ni sesiones persistentes. 
