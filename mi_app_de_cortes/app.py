@@ -1,5 +1,9 @@
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from mi_app_de_cortes.src.controllers import haircut_controller
+
+load_dotenv()
 
 app = FastAPI(
     title="AI Haircut Advisor MVP",
@@ -14,6 +18,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(haircut_controller.router, prefix="/api")
 
 
 @app.get("/")
