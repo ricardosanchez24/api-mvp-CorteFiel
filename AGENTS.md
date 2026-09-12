@@ -26,6 +26,18 @@ pip install -r mi_app_de_cortes/requirements.txt
 
 # Run dev server
 uvicorn mi_app_de_cortes.app:app --reload
+
+# Run tests
+python -m pytest mi_app_de_cortes/tests/ -v
+
+# Run specific test file
+python -m pytest mi_app_de_cortes/tests/test_styles_data.py -v
+
+# Run test group (class)
+python -m pytest mi_app_de_cortes/tests/test_styles_data.py::TestGetAllStyles -v
+
+# Run single test
+python -m pytest mi_app_de_cortes/tests/test_styles_data.py::TestGetAllStyles::test_returns_list -v
 ```
 
 ## Tech Stack (Mandatory)
