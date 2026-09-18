@@ -1,13 +1,24 @@
 """Tests for POST /api/recommend endpoint - Feature 002"""
 
 import io
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 import pytest
 from fastapi.testclient import TestClient
 
 from mi_app_de_cortes.app import app
+from mi_app_de_cortes.src.models.recommend import Recommendation
 
 client = TestClient(app)
+
+
+def _make_recommendation(style_id: str, style_name: str) -> Recommendation:
+    """Helper to create mock Recommendation objects."""
+    return Recommendation(
+        style_id=style_id,
+        style_name=style_name,
+        description="Test",
+        image_url=b"fake",
+    )
 
 
 class TestRecommendEndpoint:
@@ -18,7 +29,7 @@ class TestRecommendEndpoint:
             mock_service.validate_image.return_value = None
             mock_service.analyze_face.return_value = {"face_shape": "oval"}
             mock_service.generate_recommendations.return_value = [
-                {"style_id": "undercut", "style_name": "Undercut", "description": "Test", "image_url": b"fake"}
+                _make_recommendation("undercut", "Undercut"),
             ]
             response = client.post(
                 "/api/recommend",
@@ -31,7 +42,7 @@ class TestRecommendEndpoint:
             mock_service.validate_image.return_value = None
             mock_service.analyze_face.return_value = {"face_shape": "oval"}
             mock_service.generate_recommendations.return_value = [
-                {"style_id": "undercut", "style_name": "Undercut", "description": "Test", "image_url": b"fake"}
+                _make_recommendation("undercut", "Undercut"),
             ]
             response = client.post(
                 "/api/recommend",
@@ -45,9 +56,9 @@ class TestRecommendEndpoint:
             mock_service.validate_image.return_value = None
             mock_service.analyze_face.return_value = {"face_shape": "oval"}
             mock_service.generate_recommendations.return_value = [
-                {"style_id": "undercut", "style_name": "Undercut", "description": "Test", "image_url": b"fake"},
-                {"style_id": "fade", "style_name": "Fade", "description": "Test", "image_url": b"fake"},
-                {"style_id": "textured-crop", "style_name": "Textured Crop", "description": "Test", "image_url": b"fake"},
+                _make_recommendation("undercut", "Undercut"),
+                _make_recommendation("fade", "Fade"),
+                _make_recommendation("textured-crop", "Textured Crop"),
             ]
             response = client.post(
                 "/api/recommend",

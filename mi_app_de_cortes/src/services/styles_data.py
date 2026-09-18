@@ -59,6 +59,11 @@ def get_style_by_id(style_id: str) -> Optional[dict]:
     return None
 
 
+def get_styles_by_face_shape(face_shape: str) -> list[dict]:
+    """Return styles compatible with a specific face shape."""
+    return [s for s in STYLES if face_shape in s["face_shapes"]]
+
+
 def get_style_prompt(style_id: str, face_shape: str) -> str:
     """Return the prompt for generating an image with a specific style."""
     style = get_style_by_id(style_id)
