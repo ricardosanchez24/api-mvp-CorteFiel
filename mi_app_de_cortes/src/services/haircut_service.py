@@ -6,7 +6,6 @@ from mi_app_de_cortes.src.services.styles_data import (
     get_all_styles,
     get_style_by_id,
     get_style_prompt,
-    get_styles_by_face_shape,
 )
 from mi_app_de_cortes.src.models.recommend import Recommendation
 
@@ -35,19 +34,25 @@ def analyze_face(image_bytes: bytes, content_type: str) -> dict:
 
 
 def generate_recommendations(image_bytes: bytes, analysis: dict) -> list[Recommendation]:
-    """Generate 3 haircut recommendations with images based on face shape."""
+    """Generate haircut recommendations with images based on AI analysis."""
     face_shape = analysis.get("face_shape", "oval")
+    recommended_styles = analysis.get("recommended_styles", [])
     replicate_client = ReplicateClient()
-    styles = get_styles_by_face_shape(face_shape)[:3]
     recommendations = []
 
-    for style in styles:
-        prompt = get_style_prompt(style["id"], face_shape)
+    for style_rec in recommended_styles:
+        style_id = style_rec["id"]
+        reason = style_rec["reason"]
+        style_data = get_style_by_id(style_id)
+        if style_data is None:
+            continue
+        prompt = get_style_prompt(style_id, face_shape)
         image_result = replicate_client.generate_image(prompt, image_bytes)
         recommendations.append(Recommendation(
-            style_id=style["id"],
-            style_name=style["name"],
-            description=style["description"],
+            style_id=style_id,
+            style_name=style_data["name"],
+            description=style_data["description"],
+            reason=reason,
             image_url=image_result,
         ))
 

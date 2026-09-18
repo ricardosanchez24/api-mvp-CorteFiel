@@ -31,7 +31,10 @@ class AIClient:
                 "hair_texture (fine, medium, thick), "
                 "skin_tone (light, medium, dark), "
                 "features (list of prominent facial features), "
-                "confidence (high, medium, low). "
+                "confidence (high, medium, low), "
+                "recommended_styles (list of 3 hairstyle recommendations with id and reason). "
+                "Available styles: undercut, fade, textured-crop. "
+                "For each recommended style, explain WHY it suits this person's face. "
                 "Respond only in JSON format.",
                 types.Part.from_bytes(data=image_bytes, mime_type=mime_type),
             ],
@@ -49,6 +52,16 @@ class AIClient:
                             items=types.Schema(type=types.Type.STRING),
                         ),
                         "confidence": types.Schema(type=types.Type.STRING),
+                        "recommended_styles": types.Schema(
+                            type=types.Type.ARRAY,
+                            items=types.Schema(
+                                type=types.Type.OBJECT,
+                                properties={
+                                    "id": types.Schema(type=types.Type.STRING),
+                                    "reason": types.Schema(type=types.Type.STRING),
+                                },
+                            ),
+                        ),
                     },
                     property_ordering=[
                         "face_shape",
@@ -57,6 +70,7 @@ class AIClient:
                         "skin_tone",
                         "features",
                         "confidence",
+                        "recommended_styles",
                     ],
                 ),
             ),

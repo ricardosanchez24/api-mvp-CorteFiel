@@ -11,12 +11,13 @@ from mi_app_de_cortes.src.models.recommend import Recommendation
 client = TestClient(app)
 
 
-def _make_recommendation(style_id: str, style_name: str) -> Recommendation:
+def _make_recommendation(style_id: str, style_name: str, reason: str = "Test reason") -> Recommendation:
     """Helper to create mock Recommendation objects."""
     return Recommendation(
         style_id=style_id,
         style_name=style_name,
         description="Test",
+        reason=reason,
         image_url=b"fake",
     )
 

@@ -8,6 +8,7 @@ class Recommendation(BaseModel):
     style_id: str
     style_name: str
     description: str
+    reason: str
     image_url: bytes
 
 
