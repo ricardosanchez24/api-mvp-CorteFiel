@@ -4,8 +4,8 @@
 
 | # | Feature | Estado | Dependencias |
 |---|---------|--------|--------------|
-| 001 | Análisis de Foto con IA | Pendiente | Google GenAI SDK |
-| 002 | Recomendación Personalizada | Pendiente | Feature 001 |
+| 001 | Análisis de Foto con IA | ✅ Completada | Google GenAI SDK |
+| 002 | Recomendación Personalizada | 🔄 En desarrollo (rediseñada 2026-09-20) | Feature 001 |
 
 ## Fase 2 - Futuro
 
