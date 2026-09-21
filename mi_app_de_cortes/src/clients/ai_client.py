@@ -23,7 +23,7 @@ class AIClient:
     def analyze_image(self, image_bytes: bytes, mime_type: str) -> dict:
         client = self.get_client()
         response = client.models.generate_content(
-            model="gemini-3.5-flash",
+            model="gemini-3.6-flash",
             contents=[
                 "Analyze this face photo and extract the following information in JSON format: "
                 "face_shape (oval, round, square, heart, oblong), "
