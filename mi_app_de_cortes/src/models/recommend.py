@@ -15,18 +15,12 @@ class JobStatus(str, Enum):
 
 
 class Recommendation(BaseModel):
-    """Una recomendación de corte. image_base64 se renombra en la Fase D."""
+    """Una recomendación de corte con la foto del usuario editada (base64 inline)."""
     style_id: str
     style_name: str
     description: str
     reason: str
-    image_url: bytes
-
-
-class RecommendResponse(BaseModel):
-    """Respuesta de /api/recommend (compatibilidad temporal hasta Fase D)."""
-    success: bool
-    recommendations: list[Recommendation]
+    image_base64: str
 
 
 class JobCreateResponse(BaseModel):

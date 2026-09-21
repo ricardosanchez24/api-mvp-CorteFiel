@@ -1,6 +1,10 @@
 import os
+from typing import Optional
+
 from google import genai
 from google.genai import types
+
+_MODEL = "gemini-3.6-flash"
 
 
 class AIClient:
@@ -23,7 +27,7 @@ class AIClient:
     def analyze_image(self, image_bytes: bytes, mime_type: str) -> dict:
         client = self.get_client()
         response = client.models.generate_content(
-            model="gemini-3.6-flash",
+            model=_MODEL,
             contents=[
                 "Analyze this face photo and extract the following information in JSON format: "
                 "face_shape (oval, round, square, heart, oblong), "
@@ -31,10 +35,7 @@ class AIClient:
                 "hair_texture (fine, medium, thick), "
                 "skin_tone (light, medium, dark), "
                 "features (list of prominent facial features), "
-                "confidence (high, medium, low), "
-                "recommended_styles (list of 3 hairstyle recommendations with id and reason). "
-                "Available styles: undercut, fade, textured-crop. "
-                "For each recommended style, explain WHY it suits this person's face. "
+                "confidence (high, medium, low). "
                 "Respond only in JSON format.",
                 types.Part.from_bytes(data=image_bytes, mime_type=mime_type),
             ],
@@ -52,16 +53,6 @@ class AIClient:
                             items=types.Schema(type=types.Type.STRING),
                         ),
                         "confidence": types.Schema(type=types.Type.STRING),
-                        "recommended_styles": types.Schema(
-                            type=types.Type.ARRAY,
-                            items=types.Schema(
-                                type=types.Type.OBJECT,
-                                properties={
-                                    "id": types.Schema(type=types.Type.STRING),
-                                    "reason": types.Schema(type=types.Type.STRING),
-                                },
-                            ),
-                        ),
                     },
                     property_ordering=[
                         "face_shape",
@@ -70,12 +61,75 @@ class AIClient:
                         "skin_tone",
                         "features",
                         "confidence",
-                        "recommended_styles",
                     ],
                 ),
             ),
         )
         return response.parsed
+
+    def select_styles(
+        self,
+        candidates: list[dict],
+        face_shape: str,
+        hair_type: Optional[str],
+        hair_texture: Optional[str],
+        features: list[str],
+    ) -> list[dict]:
+        """La IA elige exactamente 3 estilos compatibles del catálogo, con razón.
+
+        NO se usa skin_tone para recomendar (sesgo). Devuelve:
+        [{"id": "<style_id>", "reason": "<por qué le queda>"}]
+        """
+        client = self.get_client()
+        candidates_text = "\n".join(
+            f"- {c['id']}: {c['name']} — {c['description']}" for c in candidates
+        )
+        prompt = (
+            "You are a professional barber advisor for young men. "
+            f"The person has: face_shape={face_shape}, "
+            f"hair_type={hair_type or 'unknown'}, "
+            f"hair_texture={hair_texture or 'unknown'}, "
+            f"features={', '.join(features) if features else 'unknown'}. "
+            "From the candidate styles below, choose exactly 3 that suit this "
+            "person best. NEVER base your selection on skin tone. "
+            "For each chosen style, explain in one sentence why it suits this face. "
+            "Candidate styles:\n"
+            f"{candidates_text}\n"
+            "Respond only in JSON."
+        )
+        response = client.models.generate_content(
+            model=_MODEL,
+            contents=[prompt],
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                response_schema=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "selected_styles": types.Schema(
+                            type=types.Type.ARRAY,
+                            items=types.Schema(
+                                type=types.Type.OBJECT,
+                                properties={
+                                    "id": types.Schema(type=types.Type.STRING),
+                                    "reason": types.Schema(type=types.Type.STRING),
+                                },
+                                required=["id", "reason"],
+                            ),
+                        ),
+                    },
+                    required=["selected_styles"],
+                ),
+            ),
+        )
+        parsed = response.parsed
+        selected = (
+            parsed.selected_styles
+            if hasattr(parsed, "selected_styles")
+            else parsed["selected_styles"]
+        )
+        if not isinstance(selected, list):
+            raise ValueError("AI selection returned an invalid structure")
+        return selected
 
 
 ai_client = AIClient()

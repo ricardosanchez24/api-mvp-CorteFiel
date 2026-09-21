@@ -37,6 +37,10 @@ def _parse_analysis(raw: str) -> dict:
         raise ValueError("analysis must be a JSON object")
     if "face_shape" not in analysis:
         raise ValueError("analysis must contain 'face_shape' (from /api/analyze)")
+    if analysis.get("confidence") == "low":
+        raise ValueError(
+            "Analysis confidence is 'low': no face could be reliably detected"
+        )
     return analysis
 
 

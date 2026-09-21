@@ -105,16 +105,3 @@ def get_compatible_styles(face_shape: str, hair_type: str) -> list[dict]:
         for s in _STYLES
         if face_shape in s["face_shapes"] and hair_type in s["hair_types"]
     ]
-
-
-def get_style_prompt(style_id: str, face_shape: str) -> str:
-    """DEPRECATED - temporal shim para no romper haircut_service (se elimina en Fase D).
-
-    En el rediseño cada estilo tiene su prompt_template autocontenido en data:
-    el contexto del usuario se inyecta como parámetros estructurados en el
-    prompt de selección de la IA, no concatenando texto al prompt de edición.
-    """
-    style = get_style_by_id(style_id)
-    if style is None:
-        return ""
-    return style["prompt_template"]
