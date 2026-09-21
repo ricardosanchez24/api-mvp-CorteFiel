@@ -1,0 +1,485 @@
+{
+  "version": 1,
+  "styles": [
+    {
+      "id": "fade",
+      "name": "Fade Clásico",
+      "description": "Transición gradual de largo a corto en los laterales y la nuca, con la parte superior poco más larga.",
+      "prompt_template": "Change the hairstyle to a classic fade: a gradual taper from longer hair on top to short and tight on the sides and back, with clean lines. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "skin-fade",
+      "name": "Skin Fade",
+      "description": "Fade que llega hasta la piel, dejando los laterales y la nuca completamente rapados.",
+      "prompt_template": "Change the hairstyle to a skin fade: the sides and back fade down to bare skin, with slightly longer hair on top. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "fade-bajo",
+      "name": "Fade Bajo (Low Fade)",
+      "description": "El degradado comienza justo por encima de la oreja y baja hacia la nuca, muy sutil.",
+      "prompt_template": "Change the hairstyle to a low fade: a subtle taper that starts right above the ears and blends down to the neckline, keeping length higher up. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "fade-medio",
+      "name": "Fade Medio (Mid Fade)",
+      "description": "Degradado equilibrado que arranca a media altura de la cabeza, el más versátil.",
+      "prompt_template": "Change the hairstyle to a mid fade: a balanced taper starting halfway up the head, with medium length on top. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart", "oblong"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "fade-alto",
+      "name": "Fade Alto (High Fade)",
+      "description": "El degradado sube hasta arriba, dejando la parte superior con más protagonismo.",
+      "prompt_template": "Change the hairstyle to a high fade: the taper starts high on the head and the top keeps most of the length, creating strong contrast. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "taper-fade",
+      "name": "Taper Fade",
+      "description": "Desvanecido natural que solo recorta los contornos sin rapado extremo.",
+      "prompt_template": "Change the hairstyle to a taper fade: a natural, soft graduation of length around the ears and neckline without extreme shaving, keeping natural shape on top. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart", "oblong"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "drop-fade",
+      "name": "Drop Fade",
+      "description": "El fade baja detrás de la oreja siguiendo la forma de la cabeza, estilo urbano.",
+      "prompt_template": "Change the hairstyle to a drop fade: the taper drops down behind the ears and curves along the nape, with fuller hair on top. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "temple-fade",
+      "name": "Temple Fade",
+      "description": "Fade enfocado en las sienes que enmarca el rostro.",
+      "prompt_template": "Change the hairstyle to a temple fade: the sides are faded with emphasis around the temples, framing the face, while the top stays longer. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "oblong"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "bald-fade",
+      "name": "Bald Fade",
+      "description": "Fade extremo que termina completamente rapado en los bordes.",
+      "prompt_template": "Change the hairstyle to a bald fade: the sides and back are shaved completely smooth, fading into short length on top. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "buzz-cut",
+      "name": "Buzz Cut (Al Ras)",
+      "description": "Corte al ras con maquinilla de longitud uniforme en toda la cabeza.",
+      "prompt_template": "Change the hairstyle to a buzz cut: hair clipped to a very short, even length all over the head with uniform texture. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart", "oblong"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "crew-cut",
+      "name": "Crew Cut",
+      "description": "Cortísimo en laterales con un poco más de largo arriba, estilo militar clásico.",
+      "prompt_template": "Change the hairstyle to a crew cut: very short sides with slightly longer hair on top standing softly upward, neat and clean. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "butch-cut",
+      "name": "Butch Cut",
+      "description": "Muy corto y uniforme, apenas deja algo de textura arriba.",
+      "prompt_template": "Change the hairstyle to a butch cut: extremely short, nearly uniform hair with just a little texture on top, cropped close. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart", "oblong"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "ivy-league",
+      "name": "Ivy League",
+      "description": "Largo arriba peinado con raya lateral, formal y académico.",
+      "prompt_template": "Change the hairstyle to an Ivy League cut: short tapered sides with longer top neatly combed into a soft side part, preppy and formal. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "caesar-cut",
+      "name": "Corte César",
+      "description": "Flequillo corto recto hacia adelante, con laterales cortos.",
+      "prompt_template": "Change the hairstyle to a Caesar cut: short straight fringe brushed forward with short clipped sides, Roman emperor style. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart", "oblong"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "flat-top",
+      "name": "Flat Top",
+      "description": "Parte superior totalmente plana y horizontal, muy marcada.",
+      "prompt_template": "Change the hairstyle to a flat top: the top is cut perfectly flat and horizontal with sharp edges, short sides. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["round", "square"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "box-fade",
+      "name": "Box Fade",
+      "description": "Forma cuadrada redondeada alrededor de la cabeza, clásico urbano.",
+      "prompt_template": "Change the hairstyle to a box fade: a rounded square silhouette around the head with faded sides and a defined shape on top. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "heart"],
+      "hair_types": ["curly", "coily"]
+    },
+    {
+      "id": "high-top-fade",
+      "name": "High Top Fade",
+      "description": "Parte superior alta y recta, con un fade alto que la resalta.",
+      "prompt_template": "Change the hairstyle to a high top fade: a tall, flat top with a high fade on the sides, iconic urban style. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["round", "heart"],
+      "hair_types": ["curly", "coily"]
+    },
+    {
+      "id": "french-crop",
+      "name": "French Crop",
+      "description": "Pelo corto con flequillo recto y texturizado hacia adelante.",
+      "prompt_template": "Change the hairstyle to a French crop: short hair with a straight, textured fringe falling forward, clean sides. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "heart", "square"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "textured-crop",
+      "name": "Textured Crop",
+      "description": "Corte corto con textura arriba y mechones hacia adelante.",
+      "prompt_template": "Change the hairstyle to a textured crop: a short cut with visible texture on top, strands pointing naturally forward. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "crop-moderno",
+      "name": "Crop Moderno",
+      "description": "Crop pulido con raya o textura sutil, muy actual.",
+      "prompt_template": "Change the hairstyle to a modern crop: a clean, polished crop with soft texture and a subtle natural part on top, tight sides. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "curly-crop",
+      "name": "Crop Rizado (Curly Crop)",
+      "description": "Crop que aprovecha los rizos naturales arriba con laterales cortos.",
+      "prompt_template": "Change the hairstyle to a curly crop: short faded sides with natural curls kept on top, showcasing curl definition. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "heart"],
+      "hair_types": ["curly"]
+    },
+    {
+      "id": "fringe-crop",
+      "name": "Crop con Flequillo",
+      "description": "Corte corto con flequillo completo que cae en bloque sobre la frente.",
+      "prompt_template": "Change the hairstyle to a crop with a full fringe: short haircut with a solid fringe falling across the forehead, clean blunt line. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["heart", "round", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "pompadour-clasico",
+      "name": "Pompadour Clásico",
+      "description": "Volumen alto peinado hacia arriba y atrás, con laterales cortos, estilo clásico.",
+      "prompt_template": "Change the hairstyle to a classic pompadour: high volume swept up and back from the forehead, short sides, smooth and glossy. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "pompadour-moderno",
+      "name": "Pompadour Moderno",
+      "description": "Pompadour con acabado más desenfadado y textura natural.",
+      "prompt_template": "Change the hairstyle to a modern pompadour: lifted volume on top with relaxed texture, faded sides, effortless finish. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "heart"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "quiff-clasico",
+      "name": "Quiff Clásico",
+      "description": "Elevación frontal con volumen hacia arriba y laterales cortos.",
+      "prompt_template": "Change the hairstyle to a classic quiff: the front hair is styled up and with volume toward the back, short sides, polished. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "quiff-moderno",
+      "name": "Quiff Moderno",
+      "description": "Quiff con textura y movimiento, acabado matte y casual.",
+      "prompt_template": "Change the hairstyle to a modern quiff: textured volume at the front with natural movement, faded sides and a matte casual finish. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "heart"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "slicked-back",
+      "name": "Slicked Back",
+      "description": "Todo el cabello hacia atrás, peinado con brillo, elegante.",
+      "prompt_template": "Change the hairstyle to a slicked back style: all the hair combed straight back, smooth and shiny, sides blended short. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "long-top-fade",
+      "name": "Fade con Parte Superior Larga",
+      "description": "Fade con mucho largo arriba para peinar con volumen.",
+      "prompt_template": "Change the hairstyle to a long top fade: faded sides with a long top styled with volume, versatile and modern. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "heart"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "undercut",
+      "name": "Undercut Clásico",
+      "description": "Laterales rapados por completo con la parte superior larga hacia atrás.",
+      "prompt_template": "Change the hairstyle to a classic undercut: the sides are shaved close while the top stays long and is styled back, strong contrast. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "undercut-texturizado",
+      "name": "Undercut Texturizado",
+      "description": "Undercut con textura arriba, look más desenfadado.",
+      "prompt_template": "Change the hairstyle to a textured undercut: shaved sides with a textured messy top, modern and relaxed. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "heart"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "undercut-peinado",
+      "name": "Undercut Peinado Hacia Atrás",
+      "description": "Undercut pulido con la parte superior peinada hacia atrás.",
+      "prompt_template": "Change the hairstyle to a slicked undercut: shaved sides with a clean combed-back top, polished and sleek. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "side-part-clasico",
+      "name": "Raya Lateral Clásica",
+      "description": "Raya lateral definida con peinado prolijo y formal.",
+      "prompt_template": "Change the hairstyle to a classic side part: a sharp defined side part with neatly combed hair, short tapered sides, formal and tidy. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "side-part-moderno",
+      "name": "Raya Lateral Moderna",
+      "description": "Raya lateral con textura y corte más actual.",
+      "prompt_template": "Change the hairstyle to a modern side part: a side part with textured hair and a contemporary cut, not too formal. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "heart"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "comb-over",
+      "name": "Comb Over",
+      "description": "Pelo peinado de un lado hacia el otro cubriendo la cabeza.",
+      "prompt_template": "Change the hairstyle to a comb over: the hair is long enough on top to be combed across to one side, short tapered sides. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "curtain-fringe",
+      "name": "Flequillo Cortinas (Curtains)",
+      "description": "Flequillo abierto al medio enmarcando el rostro, estilo noventero.",
+      "prompt_template": "Change the hairstyle to curtain fringe: hair parted in the middle with the fringe framing both sides of the face, medium length. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "heart", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "middle-part",
+      "name": "Raya al Medio",
+      "description": "Raya central con caída natural a ambos lados.",
+      "prompt_template": "Change the hairstyle to a middle part: hair parted down the center and falling naturally on both sides, relaxed. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "fringe-completo",
+      "name": "Flequillo Completo",
+      "description": "Flequillo grueso y completo que cae sobre la frente.",
+      "prompt_template": "Change the hairstyle to a full fringe: a thick, solid fringe falling forward across the forehead, longer on top. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["heart", "round", "oblong"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "fringe-ondulado",
+      "name": "Flequillo Ondulado",
+      "description": "Flequillo con ondas naturales que cae suave sobre la frente.",
+      "prompt_template": "Change the hairstyle to a wavy fringe: a soft wavy fringe falling naturally over the forehead with relaxed texture. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["heart", "square", "oval"],
+      "hair_types": ["wavy", "curly"]
+    },
+    {
+      "id": "messy-textured",
+      "name": "Despeinado Texturizado",
+      "description": "Look despeinado con textura, con picos suaves arriba.",
+      "prompt_template": "Change the hairstyle to a messy textured look: loose, tousled hair with soft spikes and visible texture on top, short sides. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "heart"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "bro-flow",
+      "name": "Bro Flow",
+      "description": "Cabello medio-largo que fluye hacia atrás con movimiento natural.",
+      "prompt_template": "Change the hairstyle to a bro flow: medium-long hair flowing naturally back with casual movement, no strong styling. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["square", "heart", "oval"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "man-bun",
+      "name": "Man Bun",
+      "description": "Moño alto recogiendo todo el cabello, con laterales cortos o rapados.",
+      "prompt_template": "Change the hairstyle to a man bun: the hair is gathered into a bun at the top-back of the head, with shorter or shaved sides. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "low-bun",
+      "name": "Moño Bajo (Low Bun)",
+      "description": "Moño recogido en la nuca, con el resto del pelo suelto.",
+      "prompt_template": "Change the hairstyle to a low bun: the hair is tied into a bun at the nape of the neck with the rest falling loose. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "oblong"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "half-bun",
+      "name": "Half Bun",
+      "description": "La mitad superior recogida en un moño y el resto suelto.",
+      "prompt_template": "Change the hairstyle to a half bun: the top half of the hair is tied into a small bun while the lower half hangs loose. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "top-knot",
+      "name": "Top Knot",
+      "description": "Moño en la parte más alta de la cabeza, con pelo corto alrededor.",
+      "prompt_template": "Change the hairstyle to a top knot: a knot placed at the very top of the head with shorter hair around the sides and back. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square", "oblong"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "long-flow",
+      "name": "Cabello Largo",
+      "description": "Cabello largo hasta los hombros, suelto y con movimiento.",
+      "prompt_template": "Change the hairstyle to long flowing hair: shoulder-length hair loose with natural movement and soft layers. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["square", "heart"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "wolf-cut",
+      "name": "Wolf Cut",
+      "description": "Corte con capas despeinadas y flequillo, estilo salvaje.",
+      "prompt_template": "Change the hairstyle to a wolf cut: layered, tousled haircut with a shaggy fringe and volume on top, wild style. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["heart", "square", "round"],
+      "hair_types": ["wavy", "curly"]
+    },
+    {
+      "id": "shaggy",
+      "name": "Shag Despeinado",
+      "description": "Capas largas despeinadas con textura y movimiento.",
+      "prompt_template": "Change the hairstyle to a shag: shaggy layered haircut with lots of texture and natural movement. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["heart", "square"],
+      "hair_types": ["wavy", "curly"]
+    },
+    {
+      "id": "mullet-moderno",
+      "name": "Mullet Moderno",
+      "description": "Corto adelante y largo atrás, versión contemporánea.",
+      "prompt_template": "Change the hairstyle to a modern mullet: short on the front and top with longer hair at the back, contemporary tapered version. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["heart", "square", "oval"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "mullet-clasico",
+      "name": "Mullet Clásico",
+      "description": "Negocio adelante, fiesta atrás: corte clásico con nuca larga.",
+      "prompt_template": "Change the hairstyle to a classic mullet: business in the front, party in the back, with long hair at the nape. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["round", "heart"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "fringe-90s",
+      "name": "Flequillo Noventero",
+      "description": "Flequillo escogido con volumen al frente, look noventero.",
+      "prompt_template": "Change the hairstyle to a 90s fringe: a choppy textured fringe with volume at the front, retro casual vibe. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["heart", "round", "oval"],
+      "hair_types": ["straight", "wavy"]
+    },
+    {
+      "id": "afro-natural",
+      "name": "Afro Natural",
+      "description": "Afro voluminoso natural, sin cortes marcados.",
+      "prompt_template": "Change the hairstyle to a natural afro: large, voluminous rounded natural hair with no defined cuts, full texture. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "heart"],
+      "hair_types": ["curly", "coily"]
+    },
+    {
+      "id": "afro-tapered",
+      "name": "Afro Degradado (Tapered Afro)",
+      "description": "Afro con laterales despuntados y degradado limpio.",
+      "prompt_template": "Change the hairstyle to a tapered afro: a defined rounded afro with faded, tidy sides and back. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "heart", "square"],
+      "hair_types": ["curly", "coily"]
+    },
+    {
+      "id": "waves-360",
+      "name": "Ondas 360 (360 Waves)",
+      "description": "Ondas marcadas y uniformes muy pegadas al cuero cabelludo.",
+      "prompt_template": "Change the hairstyle to 360 waves: tight uniform waves brushed flat against the scalp, glossy and even. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square"],
+      "hair_types": ["coily"]
+    },
+    {
+      "id": "twists-doble",
+      "name": "Two-Strand Twists",
+      "description": "Twists de dos cuerdas que caen con textura uniforme.",
+      "prompt_template": "Change the hairstyle to two-strand twists: uniform two-strand twists all over the head with neat, defined texture. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "heart"],
+      "hair_types": ["curly", "coily"]
+    },
+    {
+      "id": "cornrows",
+      "name": "Cornrows",
+      "description": "Trenzas pegadas al cuero cabelludo en líneas rectas.",
+      "prompt_template": "Change the hairstyle to cornrows: neat scalp-tight braids in straight rows across the head. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "round"],
+      "hair_types": ["curly", "coily"]
+    },
+    {
+      "id": "locs",
+      "name": "Locs (Rastas)",
+      "description": "Rastas naturales de largo medio que caen libremente.",
+      "prompt_template": "Change the hairstyle to natural locs: medium-length dreadlocks hanging freely with natural texture. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "heart"],
+      "hair_types": ["curly", "coily"]
+    },
+    {
+      "id": "locs-slicked",
+      "name": "Locs Peinadas Hacia Atrás",
+      "description": "Rastas recogidas o peinadas hacia atrás, look limpio.",
+      "prompt_template": "Change the hairstyle to slicked-back locs: locs tied back or styled neatly away from the face, clean look. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "square", "oblong"],
+      "hair_types": ["curly", "coily"]
+    },
+    {
+      "id": "curly-top-fade",
+      "name": "Fade con Rizos Arriba",
+      "description": "Fade con rizos naturales arriba muy definidos.",
+      "prompt_template": "Change the hairstyle to a curly top fade: faded sides with defined natural curls kept on top. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "heart", "round"],
+      "hair_types": ["curly"]
+    },
+    {
+      "id": "faux-hawk",
+      "name": "Faux Hawk",
+      "description": "Franja central con volumen y laterales cortos, menos extremo que un mohicano.",
+      "prompt_template": "Change the hairstyle to a faux hawk: the middle strip of hair stands up with volume while the sides are short, less extreme than a mohawk. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["round", "square", "oval"],
+      "hair_types": ["straight", "wavy", "curly"]
+    },
+    {
+      "id": "razor-part",
+      "name": "Diseño en Cabello (Hair Tattoo)",
+      "description": "Líneas rayadas con la navaja en los laterales como diseño.",
+      "prompt_template": "Change the hairstyle to a razor part design: sharp shaved lines etched into the faded sides as a decorative design, with short hair on top. Keep the person's face, skin tone, facial features and expression unchanged. Only modify the hair.",
+      "face_shapes": ["oval", "round", "square"],
+      "hair_types": ["straight", "wavy", "curly"]
+    }
+  ]
+}
